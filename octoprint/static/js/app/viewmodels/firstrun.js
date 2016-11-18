@@ -1,8 +1,25 @@
 $(function() {
-    function FirstRunViewModel() {
+	function FirstRunViewModel() {
         var self = this;
-
-        self.username = ko.observable(undefined);
+		
+		var slideIndex = 1;
+		displaySlides(slideIndex);
+	
+		function displaySlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("first-page");
+			for(i=0; i < slides.length; i++) {
+				slides[i].style.display = "none"
+			}
+			slides[n-1].style.display = "block";
+		}
+	
+		self.displayNextSlide = function(){
+			slideIndex++;
+			displaySlides(slideIndex);
+		}
+	
+        self.username = ko.observable(undefined);	
         self.password = ko.observable(undefined);
         self.confirmedPassword = ko.observable(undefined);
 
@@ -21,8 +38,8 @@ $(function() {
         self.validData = ko.pureComputed(function() {
             return !self.passwordMismatch() && self.validUsername() && self.validPassword();
         });
-
-        self.keepAccessControl = function() {
+		
+		self.keepAccessControl = function() {
             if (!self.validData()) return;
 
             var data = {
@@ -33,8 +50,8 @@ $(function() {
             };
             self._sendData(data);
         };
-
-        self.disableAccessControl = function() {
+		
+		/*self.disableAccessControl = function() {
             $("#confirmation_dialog .confirmation_dialog_message").html(gettext("If you disable Access Control <strong>and</strong> your OctoPrint installation is accessible from the internet, your printer <strong>will be accessible by everyone - that also includes the bad guys!</strong>"));
             $("#confirmation_dialog .confirmation_dialog_acknowledge").unbind("click");
             $("#confirmation_dialog .confirmation_dialog_acknowledge").click(function(e) {
@@ -50,8 +67,8 @@ $(function() {
                 });
             });
             $("#confirmation_dialog").modal("show");
-        };
-
+        };*/
+		
         self._sendData = function(data, callback) {
             $.ajax({
                 url: API_BASEURL + "setup",
@@ -78,6 +95,7 @@ $(function() {
                 self.showDialog();
             }
         }
+		
     }
 
     OCTOPRINT_VIEWMODELS.push([
