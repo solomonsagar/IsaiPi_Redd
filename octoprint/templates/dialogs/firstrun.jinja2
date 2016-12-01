@@ -2,7 +2,7 @@
     {#<div class="modal-header">
         <h3><i class="icon-warning-sign"></i> {{ _('Configure Access Control') }}</h3>
     </div>#} 
-    <div class="modal-body">
+    <div class="modal-body firstrun">
 		{#{% trans %}<p>
             <strong>Please read the following, it is very important for your printer's health!</strong>
         </p>
@@ -21,7 +21,7 @@
 		<div class="first-page remove">
 			<p>Slicer empowers wireless 3D Printing. </p>
 			<p>We welcome you to try it out.</p>
-			<a href="#" class="btn btn-primary" data-bind="click: displayNextSlide">{{ _('Next') }}</a>
+			<a href="#" class="btn btn-primary btn-firstpage" data-bind="click: displayNextSlide">{{ _('Next') }}</a>
 		</div>
 		<div class="first-page remove">
 			<form class="form-horizontal">
@@ -41,10 +41,10 @@
 					<label class="control-label" for="first_run_username"></label>
 					<div class="controls">
 						<input type="password" class="input-medium" placeholder="Confirm Password" data-bind="value: confirmedPassword, valueUpdate: 'afterkeydown'">
-						<span class="help-inline" data-bind="visible: passwordMismatch()">{{ _('Passwords do not match') }}</span>
+						<span class="help-inline" data-bind="visible: passwordMismatch()"><p>Passwords do not match</p></span>
 					</div>
 				</div>
-				<a href="#" class="btn btn-primary" data-bind="click: keepAccessControl, enable: validData(), css: {disabled: !validData()}">{{ _('Create account') }}</a>
+				<a href="#" class="btn btn-primary btn-firstpage" data-bind="click: keepAccessControl, enable: validData(), css: {disabled: !validData()}">{{ _('Create account') }}</a>
 			</form>
 			{#{% trans %}<p>
             <strong>Note:</strong> In case that your OctoPrint installation is only accessible from within a trustworthy network and you don't

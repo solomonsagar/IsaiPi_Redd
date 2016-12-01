@@ -188,15 +188,15 @@ def index():
 	# tabs
 
 	templates["tab"]["entries"] = dict(
-		temperature=(gettext("Temperature"), dict(template="tabs/temperature.jinja2", _div="temp")),
-		control=(gettext("Control"), dict(template="tabs/control.jinja2", _div="control")),
-		terminal=(gettext("Terminal"), dict(template="tabs/terminal.jinja2", _div="term")),
+		temperature=(gettext("Basic"), dict(template="tabs/basic.jinja2", _div="temp")),
+		control=(gettext("Advanced"), dict(template="tabs/advanced.jinja2", _div="control")),
+		#terminal=(gettext("Terminal"), dict(template="tabs/terminal.jinja2", _div="term")),
 	)
-	if enable_gcodeviewer:
+	"""if enable_gcodeviewer:
 		templates["tab"]["entries"]["gcodeviewer"] = (gettext("GCode Viewer"), dict(template="tabs/gcodeviewer.jinja2", _div="gcode"))
 	if enable_timelapse:
 		templates["tab"]["entries"]["timelapse"] = (gettext("Timelapse"), dict(template="tabs/timelapse.jinja2", _div="timelapse"))
-
+	"""
 	# settings dialog
 
 	templates["settings"]["entries"] = dict(
